@@ -27,3 +27,4 @@ hs_err_pid*
 /.idea/workspace.xml
 /WeatherFramework.iml
 /jshell/jshell_console.snippet
+*.properties
