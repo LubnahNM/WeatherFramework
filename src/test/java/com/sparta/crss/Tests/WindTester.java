@@ -1,16 +1,15 @@
 package com.sparta.crss.Tests;
 
 import com.sparta.crss.DataInjection.RequestHandler;
-import com.sparta.crss.JacksonClasses.MultiWeatherDTOJackson;
+import com.sparta.crss.JacksonClasses.MultiWeatherDTO;
 import com.sparta.crss.JacksonClasses.Wind;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class WindTester {
 
-    MultiWeatherDTOJackson weatherQuery = new MultiWeatherDTOJackson();
+    MultiWeatherDTO weatherQuery = new MultiWeatherDTO();
     RequestHandler requestHandler;
     boolean isMetric;
 

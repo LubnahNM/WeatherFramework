@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "snow",
         "rain"
 })
-public class WeatherDTOJackson {
+public class WeatherDTO {
 
     @JsonProperty("coord")
     private Coord coord;

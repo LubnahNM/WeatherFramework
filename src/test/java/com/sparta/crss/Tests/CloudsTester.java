@@ -4,38 +4,38 @@ import com.sparta.crss.DataInjection.RequestHandler;
 import com.sparta.crss.JacksonClasses.Clouds;
 import com.sparta.crss.JacksonClasses.MultiWeatherDTO;
 
+import com.sparta.crss.JacksonClasses.WeatherDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CloudTester {
-    MultiWeatherDTO weatherQuery = new MultiWeatherDTO();
+public class CloudsTester {
+    WeatherDTO weatherQuery = new WeatherDTO();
     RequestHandler requestHandler;
     boolean isMetric;
 
     @BeforeEach
     public void setUp() {
-        String url = "find?lat=55.5&units=metric&lon=37.5&cnt=10";
+        String url = "weather?q=London,uk";
         requestHandler = new RequestHandler(url);
-        weatherQuery = requestHandler.createMultiResult();
-        isMetric = url.contains("metric");
+        weatherQuery = requestHandler.createResult();
     }
 
     @Test
     public void checkCorrectClass() {
-        Assertions.assertEquals(Clouds.class, weatherQuery.getList().get(0).getClouds().getClass());
+        Assertions.assertEquals(Clouds.class, weatherQuery.getClouds().getClass());
     }
     @Test
     public void checkIfNotNull() {
-        Assertions.assertTrue(weatherQuery.getList().get(0).getClouds().getClass() != null);
+        Assertions.assertTrue(weatherQuery.getClouds().getClass() != null);
     }
 
     @Test
     public void checkIfCloudsIsInteger() {
-        Assertions.assertEquals(Integer.class, weatherQuery.getList().get(0).getClouds().getAll().getClass());
+        Assertions.assertEquals(Integer.class, weatherQuery.getClouds().getAll().getClass());
     }
     @Test
     public void checkAllIsAcceptableRange() {
-        Assertions.assertTrue(weatherQuery.getList().get(0).getClouds().getAll() >= 0);
+        Assertions.assertTrue(weatherQuery.getClouds().getAll() >= 0);
     }
 }

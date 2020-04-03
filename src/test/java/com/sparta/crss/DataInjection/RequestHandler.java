@@ -1,14 +1,9 @@
 package com.sparta.crss.DataInjection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.crss.DataTransfer.DTO;
-import com.sparta.crss.DataTransfer.MultiWeatherDTO;
-import com.sparta.crss.DataTransfer.WeatherDTO;
-import com.sparta.crss.JacksonClasses.MultiWeatherDTOJackson;
-import com.sparta.crss.JacksonClasses.WeatherDTOJackson;
+import com.sparta.crss.JacksonClasses.MultiWeatherDTO;
+import com.sparta.crss.JacksonClasses.WeatherDTO;
 import com.sparta.crss.URL.URLBuilder;
-import com.sparta.crss.URL.URLBuilderInterface;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,23 +13,26 @@ public class RequestHandler {
     URLBuilder urlBuilder;
     public RequestHandler(String s){
         urlBuilder = new URLBuilder(s); // add the url call that inherit the URLBuilder
-        //setDTO(urlBuilder.getURL());
     }
 
-    public WeatherDTOJackson createResult(){
-        WeatherDTOJackson weatherQuery = new WeatherDTOJackson();
+    public void updateRequest(String s){
+        urlBuilder = new URLBuilder(s);
+    }
+
+    public WeatherDTO createResult(){
+        WeatherDTO weatherQuery = new WeatherDTO();
         try {
-            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()),WeatherDTOJackson.class);//where to get it and
+            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()), WeatherDTO.class);//where to get it and
         } catch (IOException e) {
             e.printStackTrace();
         }
         return weatherQuery;
     }
 
-    public MultiWeatherDTOJackson createMultiResult(){
-        MultiWeatherDTOJackson weatherQuery = new MultiWeatherDTOJackson();
+    public MultiWeatherDTO createMultiResult(){
+        MultiWeatherDTO weatherQuery = new MultiWeatherDTO();
         try {
-            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()),MultiWeatherDTOJackson.class);//where to get it and
+            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()), MultiWeatherDTO.class);//where to get it and
         } catch (IOException e) {
             e.printStackTrace();
         }

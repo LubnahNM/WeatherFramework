@@ -1,4 +1,4 @@
 package com.sparta.crss.Tests;
 
-public class RainTester {
+public class SnowTester {
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class dtSysTester {
+public class SysTester {
 
     private WeatherDTO weatherQuery;
     private RequestHandler requestHandler;
@@ -17,10 +17,6 @@ public class dtSysTester {
         weatherQuery = requestHandler.createResult();
     }
 
-    @Test
-    public void testDtType() {
-        Assertions.assertEquals(Integer.class, weatherQuery.getDt().getClass());
-    }
 
     @Test
     public void testSysTypeType() {
@@ -32,10 +28,6 @@ public class dtSysTester {
         Assertions.assertEquals(Integer.class, weatherQuery.getSys().getId().getClass());
     }
 
-/*    @Test
-    public void testSysMessageType() {
-        Assertions.assertEquals(null, weatherQuery.getSys().getMessage().getClass());
-    }*/
 
     @Test
     public void testSysCountryType() {
