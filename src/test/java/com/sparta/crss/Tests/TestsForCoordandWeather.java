@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-public class testsForCoordandWeather {
+public class TestsForCoordandWeather {
     RequestHandler requestHandler;
     WeatherDTOJackson weatherDTOJackson;
     @BeforeEach
