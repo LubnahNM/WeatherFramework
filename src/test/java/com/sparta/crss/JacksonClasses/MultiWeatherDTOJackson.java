@@ -14,9 +14,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "message",
         "cod",
         "count",
-        "list"
+        "list",
+        "calctime",
+        "cnt"
 })
 public class MultiWeatherDTOJackson {
+
+
 
     @JsonProperty("message")
     private String message;
@@ -24,6 +28,23 @@ public class MultiWeatherDTOJackson {
     private String cod;
     @JsonProperty("count")
     private Integer count;
+    @JsonProperty("cnt")
+    private Integer cnt;
+    @JsonProperty("calctime")
+    private Double calctime;
+
+    @JsonProperty("cnt")
+    public Integer getCnt() { return cnt; }
+
+    @JsonProperty("cnt")
+    public void setCnt(Integer cnt) { this.cnt = cnt; }
+
+    @JsonProperty("calctime")
+    public Double getCalctime() { return calctime; }
+
+    @JsonProperty("calctime")
+    public void setCalctime(Double calctime) { this.calctime = calctime; }
+
     @JsonProperty("list")
     private java.util.List<WeatherDTOJackson> list = null;
     @JsonIgnore

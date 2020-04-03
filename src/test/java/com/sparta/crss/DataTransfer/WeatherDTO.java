@@ -3,12 +3,12 @@ package com.sparta.crss.DataTransfer;
 import org.json.simple.JSONObject;
 
 public class WeatherDTO implements DTO{
+    JSONObject clouds;
+    JSONObject weather;
     JSONObject FullJSONFile;
     JSONObject coord;
-    JSONObject weather;
     JSONObject main;
     JSONObject wind;
-    JSONObject clouds;
     JSONObject rain;
     JSONObject snow;
     JSONObject sys;

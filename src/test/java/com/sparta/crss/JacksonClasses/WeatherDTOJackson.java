@@ -15,16 +15,18 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "coord",
         "weather",
         "base",
-        "main",
+        "id",
+        "timezone",
+        "name",
         "visibility",
+        "cod",
+        "dt",
+        "main",
         "wind",
         "clouds",
-        "dt",
         "sys",
-        "timezone",
-        "id",
-        "name",
-        "cod"
+        "snow",
+        "rain"
 })
 public class WeatherDTOJackson {
 
@@ -40,6 +42,10 @@ public class WeatherDTOJackson {
     private Integer visibility;
     @JsonProperty("wind")
     private Wind wind;
+    @JsonProperty("rain")
+    private Rain rain;
+    @JsonProperty("snow")
+    private Snow snow;
     @JsonProperty("clouds")
     private Clouds clouds;
     @JsonProperty("dt")
@@ -116,6 +122,22 @@ public class WeatherDTOJackson {
     public void setWind(Wind wind) {
         this.wind = wind;
     }
+
+    @JsonProperty("rain")
+    public Rain getRain() {
+        return rain;
+    }
+
+    @JsonProperty("rain")
+    public void setRain(Rain wind) {
+        this.rain = rain;
+    }
+
+    @JsonProperty("snow")
+    public Snow getSnow() { return snow; }
+
+    @JsonProperty("snow")
+    public void setSnow(Snow snow) { this.snow = snow; }
 
     @JsonProperty("clouds")
     public Clouds getClouds() {
