@@ -32,7 +32,7 @@
     ```
 - Open the project using your IDE of choice.
 - Get an access token from Open Weather.
-- Paste your token into "Url.properties" located at "WeatherFramework/src/test/resources"
+- Paste your token into "token.properties" located at "WeatherFramework/src/test/resources"
 - Create a new RequestHandler object, passing in the properties you wish to query:
     ```java
     String s = "weather?q=London,uk";
