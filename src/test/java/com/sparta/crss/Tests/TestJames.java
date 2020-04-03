@@ -1,4 +1,4 @@
-package com.sparta.crss;
+package com.sparta.crss.Tests;
 
 import com.sparta.crss.DataInjection.RequestHandler;
 import com.sparta.crss.JacksonClasses.MultiWeatherDTOJackson;

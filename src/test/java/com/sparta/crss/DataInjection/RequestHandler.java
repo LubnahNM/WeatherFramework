@@ -20,7 +20,28 @@ public class RequestHandler {
         urlBuilder = new URLBuilder(s); // add the url call that inherit the URLBuilder
         //setDTO(urlBuilder.getURL());
     }
-//    private void setDTO(String url){
+
+    public WeatherDTOJackson createResult(){
+        WeatherDTOJackson weatherQuery = new WeatherDTOJackson();
+        try {
+            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()),WeatherDTOJackson.class);//where to get it and
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return weatherQuery;
+    }
+
+    public MultiWeatherDTOJackson createMultiResult(){
+        MultiWeatherDTOJackson weatherQuery = new MultiWeatherDTOJackson();
+        try {
+            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()),MultiWeatherDTOJackson.class);//where to get it and
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return weatherQuery;
+    }
+
+    //    private void setDTO(String url){
 //        boolean isFoundCityName = url.contains("weather?q=");
 //        boolean isFoundCityID = url.contains("weather?id=");
 //        boolean isFoundGeo = url.contains("weather?lat=");
@@ -41,24 +62,4 @@ public class RequestHandler {
 //            System.out.println("Error in RequestHandler");
 //        }
 //    }
-
-
-    public WeatherDTOJackson createResult(){
-        WeatherDTOJackson weatherQuery = new WeatherDTOJackson();
-        try {
-            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()),WeatherDTOJackson.class);//where to get it and
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return weatherQuery;
-    }
-    public MultiWeatherDTOJackson createMultiResult(){
-        MultiWeatherDTOJackson weatherQuery = new MultiWeatherDTOJackson();
-        try {
-            weatherQuery= objectMapper.readValue(new URL(urlBuilder.getURL()),MultiWeatherDTOJackson.class);//where to get it and
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return weatherQuery;
-    }
 }
