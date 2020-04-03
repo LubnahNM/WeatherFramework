@@ -1,14 +1,14 @@
 package com.sparta.crss.Tests;
 
 import com.sparta.crss.DataInjection.RequestHandler;
-import com.sparta.crss.JacksonClasses.WeatherDTOJackson;
+import com.sparta.crss.JacksonClasses.WeatherDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class dtSysTester {
 
-    private WeatherDTOJackson weatherQuery;
+    private WeatherDTO weatherQuery;
     private RequestHandler requestHandler;
 
     @BeforeEach
