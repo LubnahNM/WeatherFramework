@@ -11,17 +11,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "1h",
-        "3h"
+        "1h"
 })
 public class Rain {
 
     @JsonProperty("1h")
-    public Double _1h;
-    @JsonProperty("3h")
-    public Double _3h;
+    private Double _1h;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("1h")
+    public Double get1h() {
+        return _1h;
+    }
+
+    @JsonProperty("1h")
+    public void set1h(Double _1h) {
+        this._1h = _1h;
+    }
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
