@@ -14,7 +14,7 @@ public class MultiWeatherDTOTester {
     MultiWeatherDTO multiWeatherDTO;
     @BeforeEach
     public void setUp(){
-        String s = "/find?lat=55.5&lon=37.5&cnt=10";
+        String s = "find?lat=55.5&lon=37.5&cnt=10";
         //String s = "box/city?bbox=12,32,15,37,10";
         requestHandler = new RequestHandler(s);
         multiWeatherDTO = requestHandler.createMultiResult();
@@ -31,7 +31,11 @@ public class MultiWeatherDTOTester {
 
     @Test
     public void testCod(){
-        Assertions.assertEquals(String.class, multiWeatherDTO.getCod().getClass());
+        if (multiWeatherDTO.getCod() == null) {
+            Assertions.assertNull(multiWeatherDTO.getCod());
+        } else {
+            Assertions.assertEquals(String.class, multiWeatherDTO.getCod().getClass());
+        }
     }
 
     @Test
@@ -64,18 +68,18 @@ public class MultiWeatherDTOTester {
     }
     @Test
     public void testAllListTimes(){
-        Assertions.assertTrue(checkEachOfWeatherDTO(multiWeatherDTO.getList()));
+       checkEachWeatherDTO(multiWeatherDTO.getList());
     }
 
-    public boolean checkEachOfWeatherDTO(List<WeatherDTO> listOfAllWeather){
-        if(listOfAllWeather == null) {
-            return false;
-        }
-
+    public void checkEachWeatherDTO(List<WeatherDTO> listOfAllWeather){
+//        if(listOfAllWeather == null) {
+//            return;
+//        }
         WeatherDTOTester weatherDTOTester = new WeatherDTOTester();
         for (WeatherDTO eachWeather: listOfAllWeather) {
             weatherDTOTester.weatherDTO = eachWeather;
+            weatherDTOTester.runAllTests();
         }
-        return true;
+
     }
 }
