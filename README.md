@@ -76,8 +76,8 @@
 ----
 
 ## Dependencies
-- Jackson
-- JUnit
+- Jackson version 2.10.2
+- JUnit version 5.6.1
 
 ----
 
@@ -89,7 +89,7 @@
 - Lubnah
 - Philip
 - Sebastian 
-- Tolga
+- Tolga 
 
 ----
 
