@@ -7,19 +7,26 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class MultiWeatherDTOTester {
     RequestHandler requestHandler;
     MultiWeatherDTO multiWeatherDTO;
     @BeforeEach
     public void setUp(){
         String s = "/find?lat=55.5&lon=37.5&cnt=10";
+        //String s = "box/city?bbox=12,32,15,37,10";
         requestHandler = new RequestHandler(s);
         multiWeatherDTO = requestHandler.createMultiResult();
     }
 
     @Test
     public void testMessage(){
-        Assertions.assertEquals(String.class, multiWeatherDTO.getMessage().getClass());
+        if (multiWeatherDTO.getMessage() == null) {
+            Assertions.assertNull(multiWeatherDTO.getMessage());
+        } else {
+            Assertions.assertEquals(String.class, multiWeatherDTO.getMessage().getClass());
+        }
     }
 
     @Test
@@ -29,22 +36,46 @@ public class MultiWeatherDTOTester {
 
     @Test
     public void testCount(){
-        Assertions.assertEquals(Integer.class, multiWeatherDTO.getCount().getClass());
+        if (multiWeatherDTO.getCount() == null) {
+            Assertions.assertNull(multiWeatherDTO.getCount());
+        } else {
+            Assertions.assertEquals(Integer.class, multiWeatherDTO.getCount().getClass());
+        }
     }
 
     @Test
     public void testCnt(){
-        requestHandler.updateRequest("box/city?bbox=12,32,15,37,10");
-        multiWeatherDTO = requestHandler.createMultiResult();
-        Assertions.assertEquals(Integer.class, multiWeatherDTO.getCnt().getClass());
+        if (multiWeatherDTO.getCnt() == null) {
+            Assertions.assertNull(multiWeatherDTO.getCnt());
+        } else {
+            Assertions.assertEquals(Integer.class, multiWeatherDTO.getCnt().getClass());
+        }
+
     }
 
     @Test
     public void testCalctime(){
-        requestHandler.updateRequest("box/city?bbox=12,32,15,37,10");
-        multiWeatherDTO = requestHandler.createMultiResult();
-        Assertions.assertEquals(Double.class, multiWeatherDTO.getCalctime().getClass());
+        if (multiWeatherDTO.getCalctime() == null) {
+            Assertions.assertNull(multiWeatherDTO.getCalctime());
+        } else {
+            Assertions.assertEquals(Double.class, multiWeatherDTO.getCalctime().getClass());
+        }
+
+    }
+    @Test
+    public void testAllListTimes(){
+        Assertions.assertTrue(checkEachOfWeatherDTO(multiWeatherDTO.getList()));
     }
 
+    public boolean checkEachOfWeatherDTO(List<WeatherDTO> listOfAllWeather){
+        if(listOfAllWeather == null) {
+            return false;
+        }
 
+        WeatherDTOTester weatherDTOTester = new WeatherDTOTester();
+        for (WeatherDTO eachWeather: listOfAllWeather) {
+            weatherDTOTester.weatherDTO = eachWeather;
+        }
+        return true;
+    }
 }
