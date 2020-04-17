@@ -4,19 +4,21 @@ import com.sparta.crss.DataInjection.RequestHandler;
 import com.sparta.crss.JacksonClasses.MultiWeatherDTO;
 import com.sparta.crss.JacksonClasses.WeatherDTO;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 public class MultiWeatherDTOTester {
-    RequestHandler requestHandler;
-    MultiWeatherDTO multiWeatherDTO;
-    @BeforeEach
-    public void setUp(){
-        String s = "find?lat=55.5&lon=37.5&cnt=10";
-        //String s = "box/city?bbox=12,32,15,37,10";
-        requestHandler = new RequestHandler(s);
+    private static RequestHandler requestHandler;
+    private static MultiWeatherDTO multiWeatherDTO;
+    @BeforeAll
+    public static void setUp(){
+        //String multiQuery = "find?lat=55.5&lon=37.5&cnt=10";
+        //String multiQuery = "box/city?bbox=12,32,15,37,10";
+        String multiQuery = "group?id=524901,703448,2643743&units=metric";
+        requestHandler = new RequestHandler(multiQuery);
         multiWeatherDTO = requestHandler.createMultiResult();
     }
 
@@ -72,12 +74,13 @@ public class MultiWeatherDTOTester {
     }
 
     public void checkEachWeatherDTO(List<WeatherDTO> listOfAllWeather){
-//        if(listOfAllWeather == null) {
-//            return;
-//        }
+        if(listOfAllWeather == null) {
+            return;
+        }
+
         WeatherDTOTester weatherDTOTester = new WeatherDTOTester();
         for (WeatherDTO eachWeather: listOfAllWeather) {
-            weatherDTOTester.weatherDTO = eachWeather;
+            weatherDTOTester.setWeatherDTO(eachWeather);
             weatherDTOTester.runAllTests();
         }
 

@@ -5,10 +5,7 @@ import com.sparta.crss.JacksonClasses.Clouds;
 import com.sparta.crss.JacksonClasses.Coord;
 import com.sparta.crss.JacksonClasses.WeatherDTO;
 import com.sparta.crss.JacksonClasses.Wind;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 
@@ -16,16 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class WeatherDTOTester {
-    private RequestHandler requestHandler;
-    public WeatherDTO weatherDTO;
+    private static RequestHandler requestHandler;
+    private static WeatherDTO weatherDTO;
 
-    @BeforeEach
-    public void setUp() {
-        //String s = "weather?q=London,uk";
-        //String s = "weather?q=new%20york";
-        String s = "weather?q=Belokurikha";
-        requestHandler = new RequestHandler(s);
+    @BeforeAll
+    public static void setUp() {
+        //String query = "weather?q=London,uk";
+        //String query = "weather?q=new%20york";
+        String query = "weather?q=Belokurikha";
+        requestHandler = new RequestHandler(query);
         weatherDTO = requestHandler.createResult();
+    }
+
+    public WeatherDTO getWeatherDTO() {
+        return weatherDTO;
+    }
+
+    public void setWeatherDTO(WeatherDTO weatherDTO) {
+        WeatherDTOTester.weatherDTO = weatherDTO;
     }
 
     public void runAllTests(){
